@@ -17,7 +17,8 @@ class TestView(APIView):
         t=Testmodel()
         t.res=str(data)
         t.save()
-        
+        print(req.META)
+        client_ip=req.META['REMOTE_ADDR']
         return Response(
-           {"statusCode":"0000","message":"successfull"}
+           {"statusCode":"0000","message":"successfull","client_ip":client_ip}
         )
